@@ -53,11 +53,13 @@ int max(struct node_struct* l){
 
 /*Funcion que regresa la reversa de la lista*/
 struct node_struct * reverse(struct node_struct * l){   
-    struct node_struct * rev;
-    if(l == NULL){
+    if(l == NULL)
         return;
-     }
-    rev = l;
-    return reverse(l->next);
+    if(l->next == NULL)
+        return l;
+    struct node_struct *  rev = l->next;
+    l->next = NULL;
+    reverse(rev)->next = l;
+    return l;
 }       
 
